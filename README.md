@@ -33,6 +33,8 @@ Use `rake -T` to see all the rake tasks. If you want to run them individually:
 4. `rake user_setup` to fix users.json.
 5. `rake room_delete` to remove unneeded history directories.
 
+Once you've verified the output for correctness, you can repack and reencrypt the tarball with `rake repack`. This will drop an AES-encrypted tarball in your current working directory. 
+
 
 # Spreadsheet Specification
 

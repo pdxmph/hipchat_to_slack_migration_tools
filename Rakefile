@@ -40,6 +40,21 @@ task :room_delete do
   `ruby delete_files.rb`
 end
 
+desc "Repack the archive."
+task :repack do
+
+  puts "This will put an encrypted tarball with the original password in your current working directory."
+  puts "Repacking the archive ..."
+  tarball = "#{config["hipchat_archive_location"]}/#{config["tarball_name"]}"
+  archive_dir = "#{config["hipchat_archive_location"]}/#{archive_dir_name}"
+
+  `tar cvzf #{__dir__}/#{config["tarball_name"]} -C #{archive_dir}/ .`  
+
+  puts "Encrypting the archive ... "
+  `openssl enc -aes-256-cbc -md md5 -in #{config["hipchat_archive_location"]}/#{config["hipchat_archive_name"]} -out #{__dir__}/#{config["hipchat_archive_name"]} -k #{config["hipchat_archive_password"]}`
+  
+end
+
 
 namespace "setup" do
   

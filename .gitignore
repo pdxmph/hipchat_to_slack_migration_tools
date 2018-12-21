@@ -1,2 +1,4 @@
 google_key.json
 slack_config.json
+*.tar.gz
+*.tar.gz.aes
