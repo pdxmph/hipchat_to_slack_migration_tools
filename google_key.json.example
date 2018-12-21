@@ -1,0 +1,8 @@
+This is a placeholder file. You need to replace it with the JSON generated 
+by Google to use the spreadsheet gem. 
+
+See docs here: 
+
+https://github.com/gimite/google-drive-ruby/blob/master/doc/authorization.md#on-behalf-of-no-existing-users-service-account
+
+Drop the contents of the file described into a file named `google_key.json`. 
