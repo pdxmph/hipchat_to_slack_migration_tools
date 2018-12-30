@@ -75,16 +75,23 @@ end
 
 desc "Clean out the sandbox and unpack the archive."
 task :unpack do
-  
-  puts "Cleaning out the sandbox and unpacking a fresh copy ..."
+
   tarball = "#{config["hipchat_archive_location"]}/#{config["tarball_name"]}"
   archive_dir = "#{config["hipchat_archive_location"]}/#{archive_dir_name}"
-  
+
+  puts "Cleaning out the sandbox and unpacking a fresh copy ..."  
+
+  if File.directory?(archive_dir)
+    puts "Removing archive dir ..."
+    `rm -rf #{archive_dir}`
+  end
+
+  puts "Decrypting ..."
   `openssl aes-256-cbc -d -in #{config["hipchat_archive_location"]}/#{config["hipchat_archive_name"]} -out #{config["hipchat_archive_location"]}/#{config["tarball_name"]} -pass pass:#{config["hipchat_archive_password"]}`
-  `rm -rf #{archive_dir}`
+  puts "Making archive dir ... "
   `mkdir #{archive_dir}`
+  puts "Unpacking tarball ..."
   `tar xzf #{tarball} -C #{archive_dir}`
-end
-
-
+  
+  end
 end
