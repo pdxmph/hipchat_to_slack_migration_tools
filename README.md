@@ -21,9 +21,10 @@ You also need to make a directory for your archive and edit the `slack_config.js
 
 Once you've configured all that, you should be able to:
 
-1. `rake setup:download_archive` to download your archive
-2. `rake setup:unpack` to decrypt the archive from the command line
-3. `rake run` to operate on the files using the spreadsheet. 
+1. run `bundle install` to install dependencies. 
+2. `rake setup:download_archive` to download your archive
+3. `rake setup:unpack` to decrypt the archive from the command line
+4. `rake run` to operate on the files using the spreadsheet. 
 
 Use `rake -T` to see all the rake tasks. If you want to run them individually:
 
@@ -57,6 +58,7 @@ A Google spreadsheet contains the migration information.  A few column positions
 
 # TODO
 
-* Specification for the spreadsheet
-* Automating a repack of the archive when you're done
+* <s>Make a Gemfile for the single dependency we've got.</s>
+* <s>Specification for the spreadsheet</s>
+* <s>Automating a repack of the archive when you're done</s>
 * <s>Automating decrypt of the download</s>
