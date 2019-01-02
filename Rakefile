@@ -48,10 +48,10 @@ task :repack do
   tarball = "#{config["hipchat_archive_location"]}/#{config["tarball_name"]}"
   archive_dir = "#{config["hipchat_archive_location"]}/#{archive_dir_name}"
 
-  `tar cvzf #{__dir__}/#{config["tarball_name"]} -C #{archive_dir}/ .`  
-
+  `tar -cf #{__dir__}/#{config["tarball_name"]} -C #{archive_dir}/ .`  
+  `gzip -q #{__dir__}/#{config["tarball_name"]}`
   puts "Encrypting the archive ... "
-  `openssl enc -aes-256-cbc -md md5 -in #{config["hipchat_archive_location"]}/#{config["hipchat_archive_name"]} -out #{__dir__}/#{config["hipchat_archive_name"]} -k #{config["hipchat_archive_password"]}`
+  `openssl enc -aes-256-cbc -md md5 -in #{config["tarball_name"]} -out #{config["hipchat_archive_name"]} -k #{config["hipchat_archive_password"]}`
   
 end
 
