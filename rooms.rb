@@ -8,7 +8,7 @@ config = JSON.parse(config_file)
 archive_uri = URI.parse(config["hipchat_archive_url"])
 archive_filename = File.basename(archive_uri.path)
 archive_dir_name = File.basename(archive_filename, ".tar.gz.aes")
-export_root =    config["hipchat_archive_location"] + "/#{archive_dir_name}"
+export_root =    config["hipchat_archive_location"] + "/hipchat-export"
 
 # Read in our rooms file
 rooms_file = File.read(export_root + "/rooms.json")
